@@ -127,11 +127,24 @@ namespace ParsingPS
                 int spaceAfterOpenParen = line.IndexOf(' ', openParenIndex);
 
                 string playerName = line.Substring(colonIndex + 2, (openParenIndex - 1) - (colonIndex + 1));
+                char scopeIndex = line[openParenIndex + 1];
+                if ((scopeIndex == '0') | (scopeIndex == '1') | (scopeIndex == '2') | (scopeIndex == '3') | (scopeIndex == '4') | (scopeIndex == '5') | (scopeIndex == '6') | (scopeIndex == '7') | (scopeIndex == '8') | (scopeIndex == '9'))
+                {
+                    string stackString = line.Substring(openParenIndex + 1, spaceAfterOpenParen - (openParenIndex + 1));
+                    double stack = Convert.ToDouble(stackString, CultureInfo.InvariantCulture);
 
-                string stackString = line.Substring(openParenIndex + 2, spaceAfterOpenParen - (openParenIndex + 2));
-                double stack = Convert.ToDouble(stackString, CultureInfo.InvariantCulture);
+                    playerList[lineNumber - 2] = new Players(playerName, stack, seatNumber);
+                }
+                else
+                {
+                    string stackString = line.Substring(openParenIndex + 2, spaceAfterOpenParen - (openParenIndex + 2));
+                    double stack = Convert.ToDouble(stackString, CultureInfo.InvariantCulture);
 
-                playerList[lineNumber - 2] = new Players(playerName, stack, seatNumber);
+                    playerList[lineNumber - 2] = new Players(playerName, stack, seatNumber);
+                }
+               // double stack = Convert.ToDouble(stackString, CultureInfo.InvariantCulture);
+
+                //playerList[lineNumber - 2] = new Players(playerName, stack, seatNumber);
 
             }
 
