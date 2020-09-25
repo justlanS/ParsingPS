@@ -142,9 +142,6 @@ namespace ParsingPS
 
                     playerList[lineNumber - 2] = new Players(playerName, stack, seatNumber);
                 }
-               // double stack = Convert.ToDouble(stackString, CultureInfo.InvariantCulture);
-
-                //playerList[lineNumber - 2] = new Players(playerName, stack, seatNumber);
 
             }
 
